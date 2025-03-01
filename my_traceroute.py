@@ -109,6 +109,14 @@ def get_hostname(ip):
 
 
 def main(ip: str, probes: int, n: bool, s: bool, hops: int = 64):
+    """Main function for traceroute. This function handles the control flow of the program to send each probe with
+    increasing TTL and print the results as they are received.
+    :param ip: the dst provided by the user to the program.
+    :param probes: the number of probes to send per hop.
+    :param n: flag determining whether hostnames will be shown (where possible) for each hop IP.
+    :param s: flag denoting whether to show loss summaries for each hop.
+    :param hops: maximum number of hops to attempt before prematurely ending the program.
+    """
     real_ip = ip
     real_ip = socket.gethostbyname(ip)
     losses = 0
