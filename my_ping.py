@@ -1,8 +1,21 @@
 """
+my_ping.py
+A simple implementation of some of the functionality of the Unix ping utility.
+
 Caleb Naeger - cmn4315@rit.edu
 Foundations of Computer Networks
-my_ping.py
-python script mimicking the ping utility from UNIX
+
+usage: my_ping.py [-h] [-c C] [-i I] [-s S] [-t T] dst
+
+positional arguments:
+  dst         The destination hostname or IP address to ping
+
+options:
+  -h, --help  show this help message and exit
+  -c C        The number of ping packets to send. Will send indefinitely if not provided
+  -i I        The interval to wait between each packet, defaults to 1s
+  -s S        The payload size in bytes, defaults to 56 bytes.
+  -t T        Timeout duration for a run. Will run until interrupt if not provided
 """
 import argparse
 import socket

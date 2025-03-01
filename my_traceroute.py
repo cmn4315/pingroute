@@ -13,8 +13,7 @@ positional arguments:
 
 options:
   -h, --help  show this help message and exit
-  -n          Print hop addresses numerically rather than
-              symbolically and numerically
+  -n          Print hop addresses numerically rather than symbolically and numerically
   -q Q        Set the number of probes to send per TTL
   -S          Print a summary of unanswered probes per hop
 """
