@@ -13,6 +13,9 @@ import os
 
 
 def calculate_checksum(data):
+    """Calculate the ICMP checksum for a given piece of data and return the calculated checksum.
+    :param data: the data for which to calculate the checksum
+    """
     checksum = 0
 
     # Handle odd-length data
@@ -29,8 +32,9 @@ def calculate_checksum(data):
 
 
 def create_packet(packetsize: int = 56):
-    """ Create ICMP packet to be used for the ping.
+    """ Create ICMP packet to be used and return the created packet.
     Packet creation code adapted from https://denizhalil.com/2024/04/06/sending-icmp-packets-with-python-socket-adventure-in-signaling/
+    :param packetsize: the number of data bytes to put in the packet
     """
     icmp_type = 8  # ICMP echo request
     code = 0
@@ -50,6 +54,11 @@ def create_packet(packetsize: int = 56):
 
 
 def ping(packet: bytes, ip: str = "8.8.8.8"):
+    """Send a ping to a given IP, timing the response time. Returns a Tuple(bool, float) representing whether the
+    response was lost and the total time in seconds for the ping. On loss, response time will be -1.
+    :param packet: the packet to send.
+    :param ip: the IP address to which to send the packet.
+    """
     with socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP) as sock:
         sock.settimeout(10)
         resp_time = time.time()
@@ -75,6 +84,14 @@ def ping(packet: bytes, ip: str = "8.8.8.8"):
 
 
 def main(ip: str, timeout: int, packetsize: int, count: int, wait: int):
+    """The main function for my_ping.py, controlling the sending of pings, aggregation and output of results, and
+    timeouts/end conditions.
+    :param ip: the dst provided by the user.
+    :param timeout: total time in seconds for which the program should run.
+    :param packetsize: the number of data bytes to add to the ping packet.
+    :param count: the total number of pings to send.
+    :param wait: time in seconds to wait between each ping.
+    """
     real_ip = ip
     real_ip = socket.gethostbyname(ip)
     print(f"PING {ip} ({real_ip}): {packetsize} data bytes")
