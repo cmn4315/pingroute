@@ -40,11 +40,11 @@ Like `my_ping`, a description of each command line argumentfor `my_traceroute` c
 Below are some example commands, with descriptions of the intended result:
 
  - `python3 my_ping.py google.com`
-	 - ping google.com indefinitely until keybard interrupt.
+	 - ping google.com indefinitely until keyboard interrupt.
  - `python3 my_ping.py amazon.com -c 5`
 	 - ping amazon.com 5 times.
  - `python3 my_ping.py google.com -s 30`
-	 - ping google.com indefinitely until keybard interrupt, with 30 byte packets.
+	 - ping google.com indefinitely until keyboard interrupt, with 30 byte packets.
  - `python3 my_traceroute.py 8.8.8.8`
 	 - Trace the packet path to google's open DNS server at IP 8.8.8.8.
  - `python3 my_traceroute.py 8.8.8.8 -n`
